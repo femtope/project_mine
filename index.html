@@ -50,9 +50,9 @@
                  <!--Date-->
                 <h4 class="info-box-number white"><i class="icon fa fa-calendar fa-1x"></i>Date</h4>
                   <div class="form-control">
-                        <select id='m' name='month'></select>&nbsp;&nbsp;
-                        <select id='d' name='day'></select>&nbsp;
-                        <select id='y' name='year'></select>
+                        <select id='m' name='month' onchange="changeMonth(this);"></select>&nbsp;&nbsp;
+                        <select id='d' name='day' onchange="changeDay(this);"></select>&nbsp;
+                        <select id='y' name='year' onchange="changeYear(this);"></select>
                   </div>
                 <br>
                  
@@ -137,6 +137,7 @@
                     </div>
 
                  <!--Substance / Natural Resources-->
+                 <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-diamond fa-1x"></i>Substance/Resource</h4>
                       <div class="form-group-sm">
                         <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">

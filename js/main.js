@@ -357,55 +357,6 @@ function logError(error) {
 }
 
 
-//function geoLocate(km){
-//var options = {
-//  enableHighAccuracy: true,
-//  timeout: Infinity,
-//  maximumAge: 0
-//};
-//
-//function success(pos) {
-//  var crd = pos.coords;
-//    current_lat = crd.latitude;
-//    current_long = crd.longitude;
-//    current_accuracy = crd.accuracy;
-//
-//    var fc = {
-//"type": "FeatureCollection",
-//"features": [
-//{ "type": "Feature", "properties": { "id": 5 }, "geometry": { "type": "Point", "coordinates": [current_long, current_lat] } }
-//]
-//}
-//        var jsonLayer = L.geoJson(fc).addTo(map);
-//        var coord = fc.features[0].geometry.coordinates;
-//        lalo = L.GeoJSON.coordsToLatLng(coord);
-//        map.setView(lalo, 14);
-//
-//    var drive = km * 1;
-//    buffered = turf.buffer(fc, drive, 'kilometers');
-////    console.log('Buffered::  ', buffered);
-////    within = turf.within(geoData, buffered);
-//
-//    bufferLayer = L.geoJson(buffered).addTo(map);
-////    within_fc = L.geoJson(within).addTo(map);
-//    bufferLayer.setStyle({
-//        stroke:false,
-//        strokeWidth: 2,
-//        fillColor: 'red',
-//        fillOpacity: 0.1
-//    })
-//
-//};
-//
-//function error(err) {
-//  console.warn('ERROR(' + err.code + '): ' + err.message);
-//};
-//
-//     navigator.geolocation.getCurrentPosition(success, error, options);
-//}
-//
-
-
 
 //Filtering Prefecture Based on Selected Region
 $(document).ready(function () {
@@ -420,30 +371,6 @@ $(document).ready(function () {
     });
 });
 
-
-
-//function radio_drive() {
-//    if(document.getElementById("2km").checked) {
-//        if(bufferLayer != null)
-//            map.removeLayer(bufferLayer)
-//        twokm = $('#2km').val();
-//        geoLocate(twokm);
-//		}
-//
-//    if(document.getElementById("3km").checked) {
-//        if(bufferLayer != null)
-//            map.removeLayer(bufferLayer)
-//        threekm = $('#3km').val();
-//        geoLocate(threekm);
-//		}
-//
-//    if(document.getElementById("4km").checked) {
-//        if(bufferLayer != null)
-//            map.removeLayer(bufferLayer)
-//        fourkm = $('#4km').val();
-//        geoLocate(fourkm);
-//		}
-//}
 
 
 function showPrefecture() {
@@ -466,3 +393,48 @@ function showPrefecture() {
 getAdminLayers()
 hideLoader()
 /*triggerUiUpdate()*/
+
+
+//For Auto Date Generation
+var monthtext=['January','February','March','April','May','June','July','August','September','October','November','December'];
+function populatedropdown(dayfield, monthfield, yearfield){
+	var today=new Date()
+	var dayfield=document.getElementById(dayfield);
+	var monthfield=document.getElementById(monthfield);
+	var yearfield=document.getElementById(yearfield);
+	for (var i=0; i<31; i++)
+		dayfield.options[i]=new Option(i+1, i+1)
+	dayfield.options[today.getDate()-1].selected=true;
+	for (var m=0; m<12; m++)
+		monthfield.options[m]=new Option(monthtext[m], monthtext[m])
+	monthfield.options[today.getMonth()].selected=true;
+	var thisyear=today.getFullYear()
+	for (var y=0; y<20; y++){
+		yearfield.options[y]=new Option(thisyear, thisyear)
+		thisyear+=1
+	}
+yearfield.options[0]=new Option(today.getFullYear(), today.getFullYear(), true, true) //select today's year
+}
+onload=function(){
+	 populatedropdown('d', 'm', 'y')
+}
+
+var d, m, y;
+function changeDay(ev)
+{
+    d = ev.value;
+    console.log("Day: ", d);
+}
+
+function changeMonth(ev)
+{
+    m = ev.value;
+    console.log("Month: ", m);
+}
+
+function changeYear(ev)
+{
+    y = ev.value;
+    console.log("Year: ", y);
+    console.log("DATE: ", d+": "+m+": "+y);    
+}

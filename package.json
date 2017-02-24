@@ -11,5 +11,8 @@
     "Facilities"
   ],
   "author": "Ooju Oluwafemi Emmanuel, Namakoro Keita, Samuel Mesfin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "leaflet-labeled-circle": "^1.0.1"
+  }
 }

@@ -46,8 +46,18 @@
                     <span class="info-box-number white"><b id="country2"></b><big id="projectCount">0</big> Mine Resources  </span>
             </div>
              <div class="alert alert-info sideColor">
-                 <!--Map Types-->
-                <h4 class="info-box-number white"><i class="icon fa fa-map fa-1x"></i>Map Type </h4>
+                 
+                 <!--Date-->
+                <h4 class="info-box-number white"><i class="icon fa fa-calendar fa-1x"></i>Date</h4>
+                  <div class="form-control">
+                        <select id='m' name='month'></select>&nbsp;&nbsp;
+                        <select id='d' name='day'></select>&nbsp;
+                        <select id='y' name='year'></select>
+                  </div>
+                <br>
+                 
+                 <!--Map Type of choose            -->
+                 <h4 class="info-box-number white"><i class="icon fa fa-map fa-1x"></i>Map Type </h4>
                       <div class="form-group-sm">
                         <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
                             <option value="">All</option>
@@ -60,7 +70,7 @@
 
                  <!--Region DropDown-->
                  <br>
-                 <h4><i class="icon fa fa-globe fa-1x"></i>Region</h4>
+                 <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Region</h4>
                       <div class="form-group-sm">
                         <select id="region_scope" onchange="getAdminLayers(); triggerUiUpdate(); showPrefecture();" class="form-control">
                             <option value="">All</option>
@@ -77,7 +87,7 @@
 
                  <!--Prefecture DropDown-->
                  <br>
-                 <h4 id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Prefecture</h4>
+                 <h4 class="info-box-number white" id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Prefecture</h4>
                       <div id="prefecture_id1" class="form-group-sm" readonly style="visibility:hidden">
                         <select id="prefecture_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
                             <option value="">All</option>
@@ -126,12 +136,21 @@
                         </select>
                     </div>
 
-                 <!--Distance-->
-<!--
+                 <!--Substance / Natural Resources-->
+                 <h4 class="info-box-number white"><i class="icon fa fa-diamond fa-1x"></i>Substance/Resource</h4>
+                      <div class="form-group-sm">
+                        <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
+                            <option value="">All</option>
+                                <option value="Granite">Granite</option>
+                                <option value="Columbite">Columbite</option>
+                                <option value="Iron Ore">Iron Ore</option>
+                                <option value="Coltan">Coltan</option>
+                                <option value="Tantalite">Tantalite</option>
+                                <option value="Cassiterite">Cassiterite</option>
+                        </select>
+                      </div>
                 <br>
-                 <h4><i class="icon fa fa-car fa-1x"></i>Drive Distance</h4>
-                 <br>
--->
+                
             </div>
           </section>
             <div class="logo_pad">
@@ -177,6 +196,7 @@
             </ul>
         </div>
         </section>
+        <script src="js/date.js"></script>
         <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <!-- Bootstrap 3.3.5 -->
         <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -187,6 +207,7 @@
         <script src="plugins/MarkerCluster/leaflet.markercluster-src.js"></script>
 <!--        <script src="node_modules/turf/turf.js"></script>-->
     </div>
+    
 </body>
 
 </html>

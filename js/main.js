@@ -13,7 +13,7 @@ var type = '', distance,
     within, within_fc, buffered = null,
     GINAdmin2 = false,
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
-//    googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
+    googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
 //    terrain = googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
     osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18})
 //    mapbox = L.tileLayer('https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day.grey/{z}/{x}/{y}/256/png8?lg=eng&token=61YWYROufLu_f8ylE0vn0Q&app_id=qIWDkliFCtLntLma2e6O', {maxZoom: 18})
@@ -32,7 +32,8 @@ map.options.minZoom = 7;
 
 var baseMaps = {
     "Google Satelite": googleSat,
-    "OSM": osm
+    "OSM": osm,
+    "Google Street": googleStreets
 };
 
 
@@ -419,22 +420,26 @@ onload=function(){
 	 populatedropdown('d', 'm', 'y')
 }
 
-var d, m, y;
+var d, m, y, date;
 function changeDay(ev)
 {
-    d = ev.value;
+//    d = ev.value;
+    d = ev.selectedIndex+1;
     console.log("Day: ", d);
 }
 
 function changeMonth(ev)
 {
-    m = ev.value;
+//    m = ev.value;
+    m = ev.selectedIndex+1;
     console.log("Month: ", m);
 }
 
 function changeYear(ev)
 {
-    y = ev.value;
+//    y = ev.value;
+    y = ev.selectedIndex+2017;
+    date = m+"/"+d+"/"+y; 
     console.log("Year: ", y);
-    console.log("DATE: ", d+": "+m+": "+y);    
+    console.log("DATE: ", date);    
 }

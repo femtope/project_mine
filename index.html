@@ -37,14 +37,11 @@
         <aside class="main-sidebar main-sidebar-light sidebar_edit">
             <section class="sidebar">
             <div class="text-center">
-                <h1>Ministère des Mines</h1>
+                <a target="_blank" href="http://mines.gov.gn/"><h1>Ministère des Mines</h1></a>
             </div>
 
             <div><br></div>
-            <div class="text-center">
-                    <span class="info-box-text white">Currently Displaying:</span>
-                    <span class="info-box-number white"><b id="country2"></b><big id="projectCount">0</big> Mine Resources  </span>
-            </div>
+            
              <div class="alert alert-info sideColor">
                  
                  <!--Date-->
@@ -54,20 +51,6 @@
                         <select id='d' name='day' onchange="changeDay(this);"></select>&nbsp;
                         <select id='y' name='year' onchange="changeYear(this);"></select>
                   </div>
-                <br>
-                 
-                 <!--Map Type of choose            -->
-                 <h4 class="info-box-number white"><i class="icon fa fa-map fa-1x"></i>Map Type </h4>
-                      <div class="form-group-sm">
-                        <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
-                            <option value="">All</option>
-                                <option value="MapType1">MapType1</option>
-                                <option value="MapType2">MapType2</option>
-                                <option value="MapType3">MapType3</option>
-                        </select>
-                      </div>
-
-
                  <!--Region DropDown-->
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Region</h4>
@@ -136,26 +119,45 @@
                         </select>
                     </div>
 
+                 
+                 <!--Company -->
+                 <br>
+                 <h4 class="info-box-number white"><i class="icon fa fa-building fa-1x"></i>Company Name </h4>
+                      <div class="form-group-sm">
+                        <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
+                            <option value="">All</option>
+                                <option value="G.A.C">G.A.C</option>
+                                <option value="C.B.G">C.B.G</option>
+                                <option value="RUSSAL">RUSSAL</option>
+                        </select>
+                      </div>
+
+
                  <!--Substance / Natural Resources-->
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-diamond fa-1x"></i>Substance/Resource</h4>
                       <div class="form-group-sm">
                         <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
                             <option value="">All</option>
-                                <option value="Granite">Granite</option>
-                                <option value="Columbite">Columbite</option>
-                                <option value="Iron Ore">Iron Ore</option>
-                                <option value="Coltan">Coltan</option>
-                                <option value="Tantalite">Tantalite</option>
-                                <option value="Cassiterite">Cassiterite</option>
+                                <option value="Or">Or</option>
+                                <option value="Calcaire">Calcaire</option>
+                                <option value="Diamant">Diamant</option>
+                                <option value="Bauxite">Bauxite</option>
+                                <option value="Granite">Tantalite</option>
+<!--                                <option value="Cassiterite">Cassiterite</option>-->
                         </select>
                       </div>
                 <br>
+                 
+                 <div class="text-center">
+                    <span class="info-box-text white">Currently Displaying:</span>
+                    <span class="info-box-number white"><b id="country2"></b><big id="projectCount">0</big> Substance(s)  </span>
+            </div>
                 
             </div>
           </section>
             <div class="logo_pad">
-                    <a target="_blank" href="http://www.aho.afro.who.int/profiles_information/index.php/Guinea:The_Health_System"><img  src="image/logo2.png" height="70" width="300"></a>
+                    <a target="_blank" href="http://mines.gov.gn/"><img  src="image/logo2.png" height="70" width="300"></a>
             </div>
 
         </aside>
@@ -187,7 +189,7 @@
 
         <div class="col-md-12  border">
                 <ul class="social-network social-circle">
-<!--                <li><a target="_blank" href="http://www.aho.afro.who.int/profiles_information/index.php/Guinea:The_Health_System"><img class="logo_pad" src="image/logo2.png" height="60" width="300"></a></li>-->
+
                 <li><strong style="color: white;">Contact Us: </strong></li><li></li><li></li>
                 <li><a target="_blank" href="https://www.facebook.com/BrianAlex1251" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
                 <li><a target="_blank" href="http://www.twitter.com/femtope" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>

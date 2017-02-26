@@ -87,7 +87,7 @@ function triggerUiUpdate() {
 //Read data from carto and filter via selection from the interface
 function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
-    query = 'http://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
+    query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
    if (type.length > 0 || region.length > 0 || prefecture.length > 0 || sub_prefecture.length > 0){
        query = query.concat(' WHERE')
        if (type.length > 0){
@@ -111,7 +111,7 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
     }
 
    }
-     else query = 'http://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
+     else query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
   return query
 
 }

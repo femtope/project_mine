@@ -14,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "leaflet-labeled-circle": "^1.0.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^0.12.0"
   }
 }

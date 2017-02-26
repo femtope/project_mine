@@ -1,12 +1,8 @@
+// Various variable declaration
 var type = '', distance,
     twokm, threekm, fourkm,
-    region = '',
-    prefecture = '', prefecture_select = '',
-    sub_prefecture = '', current_lat = '', current_long = '', current_accuracy = '',
-    positionOpt = {},
-    geoData = null,
-    dataLayer = null,
-    markerGroup = null,
+    region = '', prefecture = '', prefecture_select = '', sub_prefecture = '', 
+    geoData = null, dataLayer = null, markerGroup = null, 
     guineaAdminLayer0, guineaAdminLayer1, guineaAdminLayer2,
     region_layer = null, prefecture_layer = null, sub_prefecture_layer = null, bufferLayer = null,
     GINLabels = [],
@@ -14,11 +10,9 @@ var type = '', distance,
     GINAdmin2 = false,
     googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
     googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
-//    terrain = googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
     osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18})
-//    mapbox = L.tileLayer('https://maps.nlp.nokia.com/maptiler/v2/maptile/newest/normal.day.grey/{z}/{x}/{y}/256/png8?lg=eng&token=61YWYROufLu_f8ylE0vn0Q&app_id=qIWDkliFCtLntLma2e6O', {maxZoom: 18})
 
-
+//Initiating and declaring leaflet map object
 var map = L.map('map', {
     center: [9.6, -12.6],
     zoom: 7,
@@ -36,8 +30,6 @@ var baseMaps = {
     "Google Street": googleStreets
 };
 
-
-
 map.on('zoomend', function () {
     adjustLayerbyZoom(map.getZoom())
 })
@@ -49,10 +41,6 @@ new L.Control.Zoom({
 
 L.control.layers(baseMaps).addTo(map);
 
-//new L.Control.Zoom({
-//    position: 'topright'
-//}).addTo(map);
-
 L.control.scale({
     position: 'bottomright',
     maxWidth: 100,
@@ -60,9 +48,10 @@ L.control.scale({
     updateWhenIdle: true
 }).addTo(map);
 
+//Helps add label to the polygons for admin boundary at zoom level greater than 9
 function adjustLayerbyZoom(zoomGIN) {
 
-    if (zoomGIN > 8) {
+    if (zoomGIN > 9) {
         if (!GINAdmin2) {
             map.addLayer(guineaAdminLayer2)
                 //Add labels to the Admin2
@@ -84,10 +73,7 @@ function adjustLayerbyZoom(zoomGIN) {
 
 }
 
-
-
-
-
+//This drives all the operation that will be rendering on the map
 function triggerUiUpdate() {
     type = $('#hf_type').val()
     region = $('#region_scope').val()
@@ -98,7 +84,7 @@ function triggerUiUpdate() {
 }
 
 
-
+//Read data from carto and filter via selection from the interface
 function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
     query = 'http://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
@@ -131,7 +117,7 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
 }
 
 
-
+//Helps add data to the marker cluster and cluster to the map with icons
 function addDataToMap(geoData) {
     // adjustLayerbyZoom(map.getZoom())
     //remove all layers first
@@ -185,6 +171,8 @@ function addDataToMap(geoData) {
     map.addLayer(markerGroup);
 }
 
+
+//Add administrative boundaries to the map and symbolizes them
 function addAdminLayersToMap(layers) {
     var layerStyles = {
             'admin0': {
@@ -277,12 +265,14 @@ function addAdminLayersToMap(layers) {
 
 }
 
-
+//Help attached counts of verious multiselection via query to the interface
 function displayInfo(feature) {
     var infoContent = buildPopupContent(feature)
     $('#infoContent').html(infoContent)
 }
 
+
+//Normalizaes the data pull from carto by removing unwanted spaces and charater
 function normalizeName(source) {
     source = source.replace("_", " ").replace('of_', ' of ')
     source = source.replace(/\w\S*/g, function (txt) {
@@ -291,6 +281,7 @@ function normalizeName(source) {
     return source
 }
 
+//Help with popup information
 function buildPopupContent(feature) {
     var subcontent = ''
     var propertyNames = ['country','region', 'prefecture', 'sub_prefecture', 'place', 'type', 'organization', 'center']
@@ -437,8 +428,8 @@ function changeMonth(ev)
 
 function changeYear(ev)
 {
-//    y = ev.value;
-    y = ev.selectedIndex+2017;
+    y =  ev.value;
+//    y = ev.selectedIndex+2017;
     date = m+"/"+d+"/"+y; 
     console.log("Year: ", y);
     console.log("DATE: ", date);    

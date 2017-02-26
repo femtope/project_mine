@@ -1,1 +1,2 @@
-# project_mine
+# Project for Ministère des Mines
+

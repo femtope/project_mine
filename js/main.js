@@ -78,8 +78,8 @@ function triggerUiUpdate() {
     type = $('#hf_type').val()
     region = $('#region_scope').val()
     prefecture = $('#prefecture_scope').val()
-    var query = buildQuery(type, region, prefecture, sub_prefecture)
-    getData(query)
+//    var query = buildQuery(type, region, prefecture, sub_prefecture)
+//    getData(query)
     prefecture_select = $('#region_scope').val()
 }
 

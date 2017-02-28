@@ -111,7 +111,7 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
     }
 
    }
-     else query = 'http://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
+     else query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
   return query
 
 }

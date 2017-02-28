@@ -8,9 +8,9 @@ var type = '', distance,
     GINLabels = [],
     within, within_fc, buffered = null,
     GINAdmin2 = false,
-    googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
-    googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
-    osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18})
+    googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
+    googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
+    osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18})
 
 //Initiating and declaring leaflet map object
 var map = L.map('map', {
@@ -87,7 +87,7 @@ function triggerUiUpdate() {
 //Read data from carto and filter via selection from the interface
 function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
-    query = 'http://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
+    query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
    if (type.length > 0 || region.length > 0 || prefecture.length > 0 || sub_prefecture.length > 0){
        query = query.concat(' WHERE')
        if (type.length > 0){

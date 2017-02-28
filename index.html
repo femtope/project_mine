@@ -55,7 +55,8 @@
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Region</h4>
                       <div class="form-group-sm">
-                        <select id="region_scope" onchange="getAdminLayers(); triggerUiUpdate(); showPrefecture();" class="form-control">
+                        <select id="region_scope" onchange="getAdminLayers(); showPrefecture();" class="form-control">
+<!--                            triggerUiUpdate(); -->
                             <option value="">All</option>
                             <option value="Boke" id="region1" class="boke">Boke</option>
                             <option value="Conakry" id="region2" class="conakry">Conakry</option>
@@ -72,7 +73,8 @@
                  <br>
                  <h4 class="info-box-number white" id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Prefecture</h4>
                       <div id="prefecture_id1" class="form-group-sm" readonly style="visibility:hidden">
-                        <select id="prefecture_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
+                        <select id="prefecture_scope" onchange="getAdminLayers(); " class="form-control">
+<!--                            triggerUiUpdate();-->
                             <option value="">All</option>
                             <option value="Boffa" class="selectors boke">Boffa</option>
                             <option value="Boke" class="selectors boke">Boke</option>
@@ -124,7 +126,7 @@
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-building fa-1x"></i>Company Name </h4>
                       <div class="form-group-sm">
-                        <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
+                        <select id="hf_type" class="form-control">
                             <option value="">All</option>
                                 <option value="G.A.C">G.A.C</option>
                                 <option value="C.B.G">C.B.G</option>
@@ -137,7 +139,8 @@
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-diamond fa-1x"></i>Substance/Resource</h4>
                       <div class="form-group-sm">
-                        <select id="hf_type" onchange="triggerUiUpdate(); getAdminLayers()" class="form-control">
+                        <select id="hf_type" class="form-control">
+<!--                            onchange="triggerUiUpdate(); getAdminLayers()"-->
                             <option value="">All</option>
                                 <option value="Or">Or</option>
                                 <option value="Calcaire">Calcaire</option>
@@ -175,7 +178,7 @@
               <div class="alert sideColor">
                     <div class="box box-primary box-solid">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Natural Resources Info</h3>
+                            <h3 class="box-title">Resources Info</h3>
                             <div class="box-tools pull-right">
                                 <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                             </div>

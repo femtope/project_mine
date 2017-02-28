@@ -319,23 +319,23 @@ function getAdminLayers() {
     var adminLayers = {}
 
     //Add Admin Layers to Map
-     $.get('resources/GIN_Admin0.geojson', function (guinea_admin0) {
-        adminLayers['guineaAdmin0'] = JSON.parse(guinea_admin0)
+     $.get('resources/GIN_Admin0.json', function (guinea_admin0) {
+        adminLayers['guineaAdmin0'] = guinea_admin0
         addAdminLayersToMap(adminLayers)
 		}).fail(function () {
             logError(null)
         })
 
-     $.get('resources/GIN_Admin1.geojson', function (guinea_admin1) {
-        adminLayers['guineaAdmin1'] = JSON.parse(guinea_admin1)
+     $.get('resources/GIN_Admin1.json', function (guinea_admin1) {
+        adminLayers['guineaAdmin1']= guinea_admin1
         addAdminLayersToMap(adminLayers)
 		}).fail(function () {
             logError(null)
         })
 
 
-     $.get('resources/GIN_Admin2.geojson', function (guinea_admin2) {
-        adminLayers['guineaAdmin2'] = JSON.parse(guinea_admin2)
+     $.get('resources/GIN_Admin2.json', function (guinea_admin2) {
+        adminLayers['guineaAdmin2'] = guinea_admin2
         addAdminLayersToMap(adminLayers)
 		}).fail(function () {
             logError(null)

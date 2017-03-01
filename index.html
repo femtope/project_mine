@@ -55,8 +55,7 @@
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Region</h4>
                       <div class="form-group-sm">
-                        <select id="region_scope" onchange="getAdminLayers(); showPrefecture();" class="form-control">
-<!--                            triggerUiUpdate(); -->
+                        <select id="region_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
                             <option value="">All</option>
                             <option value="Boke" id="region1" class="boke">Boke</option>
                             <option value="Conakry" id="region2" class="conakry">Conakry</option>
@@ -72,8 +71,8 @@
                  <!--Prefecture DropDown-->
                  <br>
                  <h4 class="info-box-number white" id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Prefecture</h4>
-                      <div id="prefecture_id1" class="form-group-sm" readonly style="visibility:hidden">
-                        <select id="prefecture_scope" onchange="getAdminLayers(); " class="form-control">
+                      <div id="prefecture_id1" class="form-group-sm" readonly style="visibility:true">
+                        <select id="prefecture_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
 <!--                            triggerUiUpdate();-->
                             <option value="">All</option>
                             <option value="Boffa" class="selectors boke">Boffa</option>
@@ -204,7 +203,7 @@
         </section>
         <script src="js/date.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<!--        <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>-->
+        <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <!-- Bootstrap 3.3.5 -->
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <!-- AdminLTE App -->

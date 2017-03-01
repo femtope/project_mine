@@ -75,12 +75,12 @@ function adjustLayerbyZoom(zoomGIN) {
 
 //This drives all the operation that will be rendering on the map
 function triggerUiUpdate() {
-    type = $('#hf_type').val()
-    region = $('#region_scope').val()
-    prefecture = $('#prefecture_scope').val()
+//    type = $('#hf_type').val()
+//    region = $('#region_scope').val()
+//    prefecture = $('#prefecture_scope').val()
 //    var query = buildQuery(type, region, prefecture, sub_prefecture)
 //    getData(query)
-    prefecture_select = $('#region_scope').val()
+//    prefecture_select = $('#region_scope').val()
 }
 
 
@@ -315,7 +315,7 @@ function getData(queryUrl) {
 }
 
 function getAdminLayers() {
-    showLoader()
+//    showLoader()
     var adminLayers = {}
 
     //Add Admin Layers to Map
@@ -368,9 +368,11 @@ $(document).ready(function () {
 function showPrefecture() {
     prefecture_show = document.getElementById("prefecture_id");
     prefecture_show1 = document.getElementById("prefecture_id1");
+    console.log("Show: ", prefecture_show);
+    console.log("Show1: ", prefecture_show1);
     if(prefecture_select != "") {
-         prefecture_show.style.visibility = "visible"
-         prefecture_show1.style.visibility = "visible"
+         prefecture_show.style.visibility = "true"
+         prefecture_show1.style.visibility = "true"
     }
 
     else{

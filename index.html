@@ -123,13 +123,14 @@
                  
                  <!--Company -->
                  <br>
-                 <h4 class="info-box-number white"><i class="icon fa fa-building fa-1x"></i>Company Name </h4>
+                 <h4 class="info-box-number white"><i class="icon fa fa-building fa-1x"></i>Société</h4>
                       <div class="form-group-sm">
-                        <select id="hf_type" class="form-control">
+                        <select id="societe_scope" onchange="triggerUiUpdate(); getAdminLayers();" class="form-control">
                             <option value="">All</option>
                                 <option value="G.A.C">G.A.C</option>
                                 <option value="C.B.G">C.B.G</option>
                                 <option value="RUSSAL">RUSSAL</option>
+                                <option value="Emporium">Emporium</option>
                         </select>
                       </div>
 
@@ -138,15 +139,15 @@
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-diamond fa-1x"></i>Substance/Resource</h4>
                       <div class="form-group-sm">
-                        <select id="hf_type" class="form-control">
-<!--                            onchange="triggerUiUpdate(); getAdminLayers()"-->
+                        <select id="substance_type" onchange="triggerUiUpdate(); getAdminLayers();" class="form-control">
+
                             <option value="">All</option>
                                 <option value="Or">Or</option>
                                 <option value="Calcaire">Calcaire</option>
                                 <option value="Diamant">Diamant</option>
                                 <option value="Bauxite">Bauxite</option>
                                 <option value="Granite">Tantalite</option>
-<!--                                <option value="Cassiterite">Cassiterite</option>-->
+                                <option value="Dolérite">Dolérite</option>
                         </select>
                       </div>
                 <br>

@@ -4,7 +4,7 @@ var type = '', distance,
     region = '', prefecture = '', prefecture_select = '', sub_prefecture = '', 
     geoData = null, dataLayer = null, markerGroup = null, 
     guineaAdminLayer0, guineaAdminLayer1, guineaAdminLayer2,
-    region_layer = null, prefecture_layer = null, sub_prefecture_layer = null, bufferLayer = null,
+    region_layer = null, prefecture_layer = null, sub_prefecture_layer = null, bufferLayer = null, substance_layer = null,
     GINLabels = [],
     within, within_fc, buffered = null,
     GINAdmin2 = false,
@@ -75,28 +75,25 @@ function adjustLayerbyZoom(zoomGIN) {
 
 //This drives all the operation that will be rendering on the map
 function triggerUiUpdate() {
-//    type = $('#hf_type').val()
-//    region = $('#region_scope').val()
-//    prefecture = $('#prefecture_scope').val()
-//    var query = buildQuery(type, region, prefecture, sub_prefecture)
-//    getData(query)
-//    prefecture_select = $('#region_scope').val()
+    societe = $('#societe_scope').val()
+    region = $('#region_scope').val()
+    prefecture = $('#prefecture_scope').val()
+    substance = $('#substance_type').val()
+    console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance)
+    var query = buildQuery(type, region, prefecture, sub_prefecture)
+    getData(query)
+    prefecture_select = $('#region_scope').val()
 }
 
 
 //Read data from carto and filter via selection from the interface
 function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
-    query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
-   if (type.length > 0 || region.length > 0 || prefecture.length > 0 || sub_prefecture.length > 0){
+    query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM mine_guinea';
+   if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0){
        query = query.concat(' WHERE')
-       if (type.length > 0){
-      query = query.concat(" type = '".concat(type.concat("'")))
-      needsAnd = true
-    }
-
-    if (region.length > 0){
-      query = needsAnd  ? query.concat(" AND region = '".concat(region.concat("'"))) :  query.concat(" region = '".concat(region.concat("'")))
+       if (region.length > 0){
+      query = query.concat(" region = '".concat(region.concat("'")))
       needsAnd = true
     }
 
@@ -105,13 +102,20 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
       needsAnd = true
     }
 
-    if(sub_prefecture.length > 0) {
-      query = needsAnd  ? query.concat(" AND sub_prefecture = '".concat(sub_prefecture.concat("'"))) :  query.concat(" sub_prefecture = '".concat(sub_prefecture.concat("'")))
+    if (societe.length > 0){
+      query = needsAnd  ? query.concat(" AND societe = '".concat(societe.concat("'"))) :  query.concat(" societe = '".concat(societe.concat("'")))
+      needsAnd = true
+    }
+
+
+
+    if(substance.length > 0) {
+      query = needsAnd  ? query.concat(" AND substance = '".concat(substance.concat("'"))) :  query.concat(" substance = '".concat(substance.concat("'")))
       needsAnd = true
     }
 
    }
-     else query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM guinea_hf';
+     else query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM mine_guinea';
   return query
 
 }
@@ -134,8 +138,8 @@ function addDataToMap(geoData) {
     var _opacity = 2
     var _fillOpacity = 2.0
 
-    var markerHealth = L.icon({
-        iconUrl: "image/Hospital_Logo_01.png",
+    var dolerite = L.icon({
+        iconUrl: "image/dolerite.jpg",
         iconSize: [20, 20],
         iconAnchor: [25, 25]
     });
@@ -151,7 +155,7 @@ function addDataToMap(geoData) {
         })
         dataLayer = L.geoJson(geoData, {
         pointToLayer: function (feature, latlng) {
-            var marker = L.marker(latlng, {icon: markerHealth})
+            var marker = L.marker(latlng, {icon: dolerite})
                 //markerGroup.addLayer(marker);
             return marker
         },
@@ -168,6 +172,7 @@ function addDataToMap(geoData) {
     })
 
     markerGroup.addLayer(dataLayer);
+    map.fitBounds(dataLayer);
     map.addLayer(markerGroup);
 }
 
@@ -262,6 +267,19 @@ function addAdminLayersToMap(layers) {
       }).addTo(map)
     map.fitBounds(prefecture_layer.getBounds())
 
+//    //Zoom In to Substance Level on selection
+//
+//    if(substance_layer != null)
+//      map.removeLayer(substance_layer)
+//
+//      substance_layer = L.geoJson(layers['guineaAdmin2'], {
+//        filter: function(feature) {
+//          return feature.properties.NAME_2 === prefectureSelect
+//      },
+//      style: layerStyles['region'],
+//      }).addTo(map)
+//    map.fitBounds(substance_layer.getBounds())
+
 
 }
 
@@ -284,7 +302,7 @@ function normalizeName(source) {
 //Help with popup information
 function buildPopupContent(feature) {
     var subcontent = ''
-    var propertyNames = ['country','region', 'prefecture', 'sub_prefecture', 'place', 'type', 'organization', 'center']
+    var propertyNames = ['date', 'region', 'prefecture', 'sous_prefecture', 'prenoms_et_nom', 'fonction', 'societe', 'prenom_directeur', 'prenom_nom_directeur', 'sexe_directeur', 'adresse_email', 'numero_telephone']
     for (var i = 0; i < propertyNames.length; i++) {
         subcontent = subcontent.concat('<p><strong>' + normalizeName(propertyNames[i]) + ': </strong>' + feature.properties[propertyNames[i]] + '</p>')
 

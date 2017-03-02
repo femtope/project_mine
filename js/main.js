@@ -187,8 +187,8 @@ function addAdminLayersToMap(layers) {
                 "color": '#B81609',
                 "fillColor": '#ffffff',
                 "weight": 2.0,
-                "opacity": 1.5,
-                "fillOpacity": 0.1
+                "opacity": 1,
+                "fillOpacity": 0.05
             },
             'admin2': {
                 "clickable": true,
@@ -196,7 +196,7 @@ function addAdminLayersToMap(layers) {
                 "fillColor": '#80FFFFFF',
                 "weight": 1.5,
                 "opacity": 0.5,
-                "fillOpacity": 0.1
+                "fillOpacity": 0
             },
             'region': {
                 "clickable": true,

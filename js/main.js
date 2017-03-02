@@ -10,7 +10,8 @@ var type = '', distance,
     GINAdmin2 = false,
     googleSat = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
     googleStreets = L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{maxZoom: 20, subdomains:['mt0','mt1','mt2','mt3']}),
-    osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18})
+    osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18}),
+    mapbox = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoicy1jaGFuZCIsImEiOiJjaXdmcmtnc2QwMDBhMnltczBldmc1MHZuIn0.eIdXZvG0VOOcZhhoHpUQYA')
 
 //Initiating and declaring leaflet map object
 var map = L.map('map', {
@@ -27,7 +28,8 @@ map.options.minZoom = 7;
 var baseMaps = {
     "Google Satelite": googleSat,
     "OSM": osm,
-    "Google Street": googleStreets
+    "Google Street": googleStreets,
+    "Map Box": mapbox
 };
 
 map.on('zoomend', function () {

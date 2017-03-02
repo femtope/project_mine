@@ -34,6 +34,7 @@ var baseMaps = {
 
 map.on('zoomend', function () {
     adjustLayerbyZoom(map.getZoom())
+
 })
 
 
@@ -53,7 +54,7 @@ L.control.scale({
 //Helps add label to the polygons for admin boundary at zoom level greater than 9
 function adjustLayerbyZoom(zoomGIN) {
 
-    if (zoomGIN > 9) {
+    if (zoomGIN > 11) {
         if (!GINAdmin2) {
             map.addLayer(guineaAdminLayer2)
                 //Add labels to the Admin2
@@ -196,7 +197,7 @@ function addAdminLayersToMap(layers) {
                 "fillColor": '#80FFFFFF',
                 "weight": 1.5,
                 "opacity": 0.5,
-                "fillOpacity": 0
+                "fillOpacity": 0.05
             },
             'region': {
                 "clickable": true,
@@ -204,7 +205,7 @@ function addAdminLayersToMap(layers) {
                 "fillColor": '#80FFFFFF',
                 "weight": 2.0,
                 "opacity": 0.7,
-                "fillOpacity": 0.1
+                "fillOpacity": 0.05
             },
             'prefecture': {
                 "clickable": true,
@@ -212,7 +213,7 @@ function addAdminLayersToMap(layers) {
                 "fillColor": '#80FFFFFF',
                 "weight": 2.5,
                 "opacity": 0.7,
-                "fillOpacity": 0.1
+                "fillOpacity": 0.05
             },
             'sub_prefecture': {
                 "clickable": true,
@@ -220,7 +221,7 @@ function addAdminLayersToMap(layers) {
                 "fillColor": '#80FFFFFF',
                 "weight": 2.5,
                 "opacity": 0.7,
-                "fillOpacity": 0.1
+                "fillOpacity": 0.05
             }
       }
 
@@ -254,7 +255,7 @@ function addAdminLayersToMap(layers) {
       },
       style: layerStyles['region'],
       }).addTo(map)
-    map.fitBounds(region_layer.getBounds())
+    map.fitBounds(region_layer)
 
     //Zoom In to Prefecture Level on selection
 
@@ -267,22 +268,8 @@ function addAdminLayersToMap(layers) {
       },
       style: layerStyles['region'],
       }).addTo(map)
-    map.fitBounds(prefecture_layer.getBounds())
-
-//    //Zoom In to Substance Level on selection
-//
-//    if(substance_layer != null)
-//      map.removeLayer(substance_layer)
-//
-//      substance_layer = L.geoJson(layers['guineaAdmin2'], {
-//        filter: function(feature) {
-//          return feature.properties.NAME_2 === prefectureSelect
-//      },
-//      style: layerStyles['region'],
-//      }).addTo(map)
-//    map.fitBounds(substance_layer.getBounds())
-
-
+    map.fitBounds(prefecture_layer)
+    console.log("Zoom Level ",map.getZoom());
 }
 
 //Help attached counts of verious multiselection via query to the interface
@@ -422,8 +409,8 @@ function populatedropdown(dayfield, monthfield, yearfield){
 	for (var m=0; m<12; m++)
 		monthfield.options[m]=new Option(monthtext[m], monthtext[m])
 	monthfield.options[today.getMonth()].selected=true;
-	var thisyear=today.getFullYear()
-	for (var y=0; y<20; y++){
+	var thisyear=today.getFullYear() - 7
+	for (var y=0; y<15; y++){
 		yearfield.options[y]=new Option(thisyear, thisyear)
 		thisyear+=1
 	}

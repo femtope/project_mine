@@ -101,10 +101,6 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
       needsAnd = true
     }
 
-    if(date.length > 0) {
-      query = needsAnd  ? query.concat(" AND date = '".concat(date.concat("'"))) :  query.concat(" date = '".concat(date.concat("'")))
-      needsAnd = true
-    }
 
     if(prefecture.length > 0) {
       query = needsAnd  ? query.concat(" AND prefecture = '".concat(prefecture.concat("'"))) :  query.concat(" prefecture = '".concat(prefecture.concat("'")))
@@ -116,10 +112,13 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
       needsAnd = true
     }
 
-
-
     if(substance.length > 0) {
       query = needsAnd  ? query.concat(" AND substance = '".concat(substance.concat("'"))) :  query.concat(" substance = '".concat(substance.concat("'")))
+      needsAnd = true
+    }
+
+       if(date.length > 0) {
+      query = needsAnd  ? query.concat(" OR date = '".concat(date.concat("'"))) :  query.concat(" date = '".concat(date.concat("'")))
       needsAnd = true
     }
 

@@ -1,5 +1,5 @@
 // Various variable declaration
-var type = '', distance,
+var d, m, y, date, type = '', distance,
     twokm, threekm, fourkm,
     region = '', prefecture = '', prefecture_select = '', sub_prefecture = '', 
     geoData = null, dataLayer = null, markerGroup = null, 
@@ -82,8 +82,8 @@ function triggerUiUpdate() {
     region = $('#region_scope').val()
     prefecture = $('#prefecture_scope').val()
     substance = $('#substance_type').val()
-    console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance)
-    var query = buildQuery(type, region, prefecture, sub_prefecture)
+    console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance+"  "+date)
+    var query = buildQuery(type, region, prefecture, sub_prefecture, date)
     getData(query)
     prefecture_select = $('#region_scope').val()
 }
@@ -93,10 +93,15 @@ function triggerUiUpdate() {
 function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
     query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM mine_guinea';
-   if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0){
+   if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0 || date.length > 0){
        query = query.concat(' WHERE')
        if (region.length > 0){
       query = query.concat(" region = '".concat(region.concat("'")))
+      needsAnd = true
+    }
+
+    if(date.length > 0) {
+      query = needsAnd  ? query.concat(" AND date = '".concat(date.concat("'"))) :  query.concat(" date = '".concat(date.concat("'")))
       needsAnd = true
     }
 
@@ -417,10 +422,11 @@ function populatedropdown(dayfield, monthfield, yearfield){
 yearfield.options[0]=new Option(today.getFullYear(), today.getFullYear(), true, true) //select today's year
 }
 onload=function(){
-	 populatedropdown('d', 'm', 'y')
+	 populatedropdown('d', 'm', 'y');
+//     triggerUiUpdate();
 }
 
-var d, m, y, date;
+
 function changeDay(ev)
 {
 //    d = ev.value;
@@ -439,7 +445,7 @@ function changeYear(ev)
 {
     y =  ev.value;
 //    y = ev.selectedIndex+2017;
-    date = m+"/"+d+"/"+y; 
+    date = d+"/"+m+"/"+y;
     console.log("Year: ", y);
     console.log("DATE: ", date);    
 }

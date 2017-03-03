@@ -93,6 +93,7 @@ function triggerUiUpdate() {
 function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
     query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM mine_guinea';
+    console.log("Date in Query: ",date)
    if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0 || date.length > 0){
        query = query.concat(' WHERE')
        if (region.length > 0){

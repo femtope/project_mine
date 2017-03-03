@@ -83,7 +83,7 @@ function triggerUiUpdate() {
     prefecture = $('#prefecture_scope').val()
     substance = $('#substance_type').val()
     console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance+"  "+date)
-    var query = buildQuery(type, region, prefecture, sub_prefecture, date)
+    var query = buildQuery(type, region, prefecture, sub_prefecture)
     getData(query)
     prefecture_select = $('#region_scope').val()
 }

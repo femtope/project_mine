@@ -101,7 +101,6 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
       needsAnd = true
     }
 
-
     if(prefecture.length > 0) {
       query = needsAnd  ? query.concat(" AND prefecture = '".concat(prefecture.concat("'"))) :  query.concat(" prefecture = '".concat(prefecture.concat("'")))
       needsAnd = true

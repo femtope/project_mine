@@ -83,7 +83,7 @@ function triggerUiUpdate() {
     prefecture = $('#prefecture_scope').val()
     substance = $('#substance_type').val()
     console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance+"  "+date)
-    var query = buildQuery(type, region, prefecture, sub_prefecture)
+    var query = buildQuery(region, prefecture, sub_prefecture, date)
     getData(query)
     prefecture_select = $('#region_scope').val()
 }
@@ -94,12 +94,13 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
   var needsAnd = false;
     query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM mine_guinea';
     console.log("Date in Query: ",date)
-   if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0){
+   if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0 ){
        query = query.concat(' WHERE')
        if (region.length > 0){
       query = query.concat(" region = '".concat(region.concat("'")))
       needsAnd = true
     }
+
 
     if(prefecture.length > 0) {
       query = needsAnd  ? query.concat(" AND prefecture = '".concat(prefecture.concat("'"))) :  query.concat(" prefecture = '".concat(prefecture.concat("'")))

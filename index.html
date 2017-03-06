@@ -40,20 +40,22 @@
                 <a target="_blank" href="http://mines.gov.gn/"><h1>Ministère des Mines</h1></a>
             </div>
 
-            <div><br></div>
+         <!--   <div><br></div>-->
             
              <div class="alert alert-info sideColor">
                  
                  <!--Date-->
+<!--
                 <h4 class="info-box-number white"><i class="icon fa fa-calendar fa-1x"></i>Date</h4>
                   <div class="form-control">
-                        <select id='d' name='day' onload="changeDay(this);" onchange="changeDay(this);"></select>&nbsp;&nbsp;
-                        <select id='m' name='month' onload="changeMonth(this);" onchange="changeMonth(this);"></select>&nbsp;
-                        <select id='y' name='year' onload="changeYear(this); triggerUiUpdate();" onchange="changeYear(this); triggerUiUpdate();"></select>
+                        <select id='d' name='day' onload="changeDay(this);" onchange="changeDay(this);triggerUiUpdate();"></select>&nbsp;&nbsp;
+                        <select id='m' name='month' onload="changeMonth(this);" onchange="changeMonth(this);triggerUiUpdate();"></select>&nbsp;
+                        <select id='y' name='year' onload="changeYear(this);" onchange="changeYear(this); triggerUiUpdate();"></select>
                   </div>
+-->
                  <!--Region DropDown-->
                  <br>
-                 <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Region</h4>
+                 <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Région</h4>
                       <div class="form-group-sm">
                         <select id="region_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
                             <option value="">All</option>
@@ -70,7 +72,7 @@
 
                  <!--Prefecture DropDown-->
                  <br>
-                 <h4 class="info-box-number white" id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Prefecture</h4>
+                 <h4 class="info-box-number white" id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Préfecture</h4>
                       <div id="prefecture_id1" class="form-group-sm" readonly style="visibility:true">
                         <select id="prefecture_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
 <!--                            triggerUiUpdate();-->

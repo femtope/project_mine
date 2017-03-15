@@ -64,7 +64,7 @@ function adjustLayerbyZoom(zoomGIN) {
             }
             GINAdmin2 = true
         }
-    } else {
+    } else if(zoomGIN <= 10) {
         map.removeLayer(guineaAdminLayer2)
         for (var i = 0; i < GINLabels.length; i++) {
             map.removeLayer(GINLabels[i])
@@ -97,13 +97,13 @@ function buildQuery(type, region, prefecture, sub_prefecture) {
    if (region.length > 0 || prefecture.length > 0 || societe.length > 0 || substance.length > 0 ){
        query = query.concat(' WHERE')
        if (region.length > 0){
-      query = query.concat(" region = '".concat(region.concat("'")))
+      query = query.concat(" carriere_region = '".concat(region.concat("'")))
       needsAnd = true
     }
 
 
     if(prefecture.length > 0) {
-      query = needsAnd  ? query.concat(" AND prefecture = '".concat(prefecture.concat("'"))) :  query.concat(" prefecture = '".concat(prefecture.concat("'")))
+      query = needsAnd  ? query.concat(" AND carriere_prefecture = '".concat(prefecture.concat("'"))) :  query.concat(" carriere_prefecture = '".concat(prefecture.concat("'")))
       needsAnd = true
     }
 
@@ -152,6 +152,12 @@ function addDataToMap(geoData) {
         iconAnchor: [25, 25]
     });
 
+    var granite = L.icon({
+        iconUrl: "image/granite.jpg",
+        iconSize: [20, 20],
+        iconAnchor: [25, 25]
+    });
+
 
 
     $('#projectCount').text(geoData.features.length)
@@ -163,8 +169,15 @@ function addDataToMap(geoData) {
         })
         dataLayer = L.geoJson(geoData, {
         pointToLayer: function (feature, latlng) {
+            if (feature.properties.substance == "Dolérite"){
             var marker = L.marker(latlng, {icon: dolerite})
                 //markerGroup.addLayer(marker);
+            }
+
+            if (feature.properties.substance == "Granite"){
+            var marker = L.marker(latlng, {icon: granite})
+                //markerGroup.addLayer(marker);
+            }
             return marker
         },
         onEachFeature: function (feature, layer) {
@@ -215,14 +228,6 @@ function addAdminLayersToMap(layers) {
             'prefecture': {
                 "clickable": true,
                 "color": '#e2095c',
-                "fillColor": '#80FFFFFF',
-                "weight": 2.5,
-                "opacity": 0.7,
-                "fillOpacity": 0.05
-            },
-            'sub_prefecture': {
-                "clickable": true,
-                "color": '#ff0000',
                 "fillColor": '#80FFFFFF',
                 "weight": 2.5,
                 "opacity": 0.7,
@@ -296,7 +301,7 @@ function normalizeName(source) {
 //Help with popup information
 function buildPopupContent(feature) {
     var subcontent = ''
-    var propertyNames = ['date', 'region', 'prefecture', 'sous_prefecture', 'prenoms_et_nom', 'fonction', 'societe', 'prenom_directeur', 'prenom_nom_directeur', 'sexe_directeur', 'adresse_email', 'numero_telephone']
+    var propertyNames = ['date', 'carriere_region', 'carriere_prefecture', 'carriere_sous_prefecture', 'prenom_nom', 'fonction', 'societe', 'prenom_directeur', 'prenom_nom_directeur', 'sexe_directeur', 'email_directeur', 'telephone_directeur', 'emploi_direct_femme', 'emploi_direct_homme', 'prix_unitaire', 'production_total', 'quantite_vendu']
     for (var i = 0; i < propertyNames.length; i++) {
         subcontent = subcontent.concat('<p><strong>' + normalizeName(propertyNames[i]) + ': </strong>' + feature.properties[propertyNames[i]] + '</p>')
 

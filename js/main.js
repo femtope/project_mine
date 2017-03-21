@@ -193,7 +193,8 @@ function addDataToMap(geoData) {
     })
 
     markerGroup.addLayer(dataLayer);
-    map.fitBounds(dataLayer);
+//    map.fitBounds(dataLayer);
+    map.fitBounds(markerGroup);
     map.addLayer(markerGroup);
 }
 

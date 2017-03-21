@@ -158,6 +158,19 @@ function addDataToMap(geoData) {
         iconAnchor: [25, 25]
     });
 
+    var calcaire = L.icon({
+        iconUrl: "image/calcaire.jpg",
+        iconSize: [20, 20],
+        iconAnchor: [25, 25]
+    });
+
+    var pouzzolane = L.icon({
+        iconUrl: "image/pouzzolane.jpg",
+        iconSize: [20, 20],
+        iconAnchor: [25, 25]
+    });
+
+
 
 
     $('#projectCount').text(geoData.features.length)
@@ -178,6 +191,16 @@ function addDataToMap(geoData) {
             var marker = L.marker(latlng, {icon: granite})
                 //markerGroup.addLayer(marker);
             }
+            if (feature.properties.substance == "Calcaire"){
+            var marker = L.marker(latlng, {icon: calcaire})
+                //markerGroup.addLayer(marker);
+            }
+
+            if (feature.properties.substance == "Pouzzolane"){
+            var marker = L.marker(latlng, {icon: pouzzolane})
+                //markerGroup.addLayer(marker);
+            }
+
             return marker
         },
         onEachFeature: function (feature, layer) {

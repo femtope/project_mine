@@ -204,8 +204,11 @@ function addDataToMap(geoData) {
             return marker
         },
         onEachFeature: function (feature, layer) {
-            if (feature.properties && feature.properties.cartodb_id) {
+            if (feature.properties && feature.properties.substance) {
                 //layer.bindPopup(buildPopupContent(feature));
+                layer.bindPopup(feature.properties.substance, {closeButton: false, offset: L.point(0, -20)});
+                layer.on('mouseover', function() {layer.openPopup()});
+                layer.on('mouseout', function() {layer.closePopup()});
                 layer.on('click', function () {
                     displayInfo(feature)
                 })

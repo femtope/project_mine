@@ -83,14 +83,15 @@ function triggerUiUpdate() {
     prefecture = $('#prefecture_scope').val()
     substance = $('#substance_type').val()
     console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance+"  "+date)
-    var query = buildQuery(region, prefecture, sub_prefecture, date)
+    var query = buildQuery(region, prefecture, societe, substance)
+    console.log("Query: ", query)
     getData(query)
     prefecture_select = $('#region_scope').val()
 }
 
 
 //Read data from carto and filter via selection from the interface
-function buildQuery(type, region, prefecture, sub_prefecture) {
+function buildQuery(region, prefecture, societe, substance) {
   var needsAnd = false;
     query = 'https://femtope.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM mine_guinea';
     console.log("Date in Query: ",date)

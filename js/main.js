@@ -396,17 +396,17 @@ function logError(error) {
 
 
 //Filtering Prefecture Based on Selected Region
-$(document).ready(function () {
-    var allOptions = $('#prefecture_scope option')
-    $('#region_scope').change(function () {
-        $('#prefecture_scope option').remove()
-        var classN = $('#region_scope option:selected').prop('class');
-        var opts = allOptions.filter('.' + classN);
-        $.each(opts, function (i, j) {
-            $(j).appendTo('#prefecture_scope');
-        });
-    });
-});
+//$(document).ready(function () {
+//    var allOptions = $('#prefecture_scope option')
+//    $('#region_scope').change(function () {
+//        $('#prefecture_scope option').remove()
+//        var classN = $('#region_scope option:selected').prop('class');
+//        var opts = allOptions.filter('.' + classN);
+//        $.each(opts, function (i, j) {
+//            $(j).appendTo('#prefecture_scope');
+//        });
+//    });
+//});
 
 
 
@@ -435,50 +435,50 @@ hideLoader()
 
 
 //For Auto Date Generation
-var monthtext=['January','February','March','April','May','June','July','August','September','October','November','December'];
-function populatedropdown(dayfield, monthfield, yearfield){
-	var today=new Date()
-	var dayfield=document.getElementById(dayfield);
-	var monthfield=document.getElementById(monthfield);
-	var yearfield=document.getElementById(yearfield);
-	for (var i=0; i<31; i++)
-		dayfield.options[i]=new Option(i+1, i+1)
-	dayfield.options[today.getDate()-1].selected=true;
-	for (var m=0; m<12; m++)
-		monthfield.options[m]=new Option(monthtext[m], monthtext[m])
-	monthfield.options[today.getMonth()].selected=true;
-	var thisyear=today.getFullYear() - 7
-	for (var y=0; y<15; y++){
-		yearfield.options[y]=new Option(thisyear, thisyear)
-		thisyear+=1
-	}
-yearfield.options[0]=new Option(today.getFullYear(), today.getFullYear(), true, true) //select today's year
-}
-onload=function(){
-	 populatedropdown('d', 'm', 'y');
-//     triggerUiUpdate();
-}
-
-
-function changeDay(ev)
-{
-//    d = ev.value;
-    d = ev.selectedIndex+1;
-    console.log("Day: ", d);
-}
-
-function changeMonth(ev)
-{
-//    m = ev.value;
-    m = ev.selectedIndex+1;
-    console.log("Month: ", m);
-}
-
-function changeYear(ev)
-{
-    y =  ev.value;
-//    y = ev.selectedIndex+2017;
-    date = d+"/"+m+"/"+y;
-    console.log("Year: ", y);
-    console.log("DATE: ", date);    
-}
+//var monthtext=['January','February','March','April','May','June','July','August','September','October','November','December'];
+//function populatedropdown(dayfield, monthfield, yearfield){
+//	var today=new Date()
+//	var dayfield=document.getElementById(dayfield);
+//	var monthfield=document.getElementById(monthfield);
+//	var yearfield=document.getElementById(yearfield);
+//	for (var i=0; i<31; i++)
+//		dayfield.options[i]=new Option(i+1, i+1)
+//	dayfield.options[today.getDate()-1].selected=true;
+//	for (var m=0; m<12; m++)
+//		monthfield.options[m]=new Option(monthtext[m], monthtext[m])
+//	monthfield.options[today.getMonth()].selected=true;
+//	var thisyear=today.getFullYear() - 7
+//	for (var y=0; y<15; y++){
+//		yearfield.options[y]=new Option(thisyear, thisyear)
+//		thisyear+=1
+//	}
+//yearfield.options[0]=new Option(today.getFullYear(), today.getFullYear(), true, true) //select today's year
+//}
+//onload=function(){
+//	 populatedropdown('d', 'm', 'y');
+////     triggerUiUpdate();
+//}
+//
+//
+//function changeDay(ev)
+//{
+////    d = ev.value;
+//    d = ev.selectedIndex+1;
+//    console.log("Day: ", d);
+//}
+//
+//function changeMonth(ev)
+//{
+////    m = ev.value;
+//    m = ev.selectedIndex+1;
+//    console.log("Month: ", m);
+//}
+//
+//function changeYear(ev)
+//{
+//    y =  ev.value;
+////    y = ev.selectedIndex+2017;
+//    date = d+"/"+m+"/"+y;
+//    console.log("Year: ", y);
+//    console.log("DATE: ", date);
+//}

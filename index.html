@@ -43,30 +43,21 @@
          <!--   <div><br></div>-->
             
              <div class="alert alert-info sideColor">
-                 
-                 <!--Date-->
-<!--
-                <h4 class="info-box-number white"><i class="icon fa fa-calendar fa-1x"></i>Date</h4>
-                  <div class="form-control">
-                        <select id='d' name='day' onload="changeDay(this);" onchange="changeDay(this);triggerUiUpdate();"></select>&nbsp;&nbsp;
-                        <select id='m' name='month' onload="changeMonth(this);" onchange="changeMonth(this);triggerUiUpdate();"></select>&nbsp;
-                        <select id='y' name='year' onload="changeYear(this);" onchange="changeYear(this); triggerUiUpdate();"></select>
-                  </div>
--->
+
                  <!--Region DropDown-->
                  <br>
                  <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Région</h4>
                       <div class="form-group-sm">
-                        <select id="region_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
+                        <select name="region_scope" id="region_scope" onchange="changecat(this.value); getAdminLayers(); triggerUiUpdate();" class="form-control">
                             <option value="">All</option>
-                            <option value="Boké" id="region1" class="Boké">Boké</option>
-                            <option value="Conakry" id="region2" class="Conakry">Conakry</option>
-                            <option value="Faranah" id="region3" class="Faranah">Faranah</option>
-                            <option value="Kankan" id="region4" class="Kankan">Kankan</option>
-                            <option value="Kindia" id="region5" class="Kindia">Kindia</option>
-                            <option value="Labe" id="region6" class="Labe">Labe</option>
-                            <option value="Mamou" id="region7" class="Mamou">Mamou</option>
-                            <option value="Nzérékoré" id="region8" class="Nzérékoré">Nzérékoré</option>
+                            <option value="Boké">Boké</option>
+                            <option value="Conakry">Conakry</option>
+                            <option value="Faranah">Faranah</option>
+                            <option value="Kankan">Kankan</option>
+                            <option value="Kindia">Kindia</option>
+                            <option value="Labe">Labe</option>
+                            <option value="Mamou">Mamou</option>
+                            <option value="Nzérékoré">Nzérékoré</option>
                         </select>
                     </div>
 
@@ -74,51 +65,8 @@
                  <br>
                  <h4 class="info-box-number white" id="prefecture_id" readonly style="visibility:true"><i class="icon fa fa-globe fa-1x"></i>Préfecture</h4>
                       <div id="prefecture_id1" class="form-group-sm" readonly style="visibility:true">
-                        <select id="prefecture_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
-<!--                            triggerUiUpdate();-->
-                            <option value="">All</option>
-                            <option value="Boffa" class="selectors Boké">Boffa</option>
-                            <option value="Boké" class="selectors Boké">Boké</option>
-                            <option value="Fria" class="selectors Boké">Fria</option>
-                            <option value="Gaoual" class="selectors Boké">Gaoual</option>
-                            <option value="Koundara" class="selectors Boké">Koundara</option>
-                            <option value="" class="selectors Boké"></option>
-                            <option value="Conakry" class="selectors Conakry">Conakry</option>
-                            <option value="" class="selectors Conakry"></option>
-                            <option value="Dabola" class="selectors faranah">Dabola</option>
-                            <option value="Dinguiraye" class="selectors faranah">Dinguiraye</option>
-                            <option value="Faranah" class="selectors faranah">Faranah</option>
-                            <option value="Kissidougou" class="selectors faranah">Kissidougou</option>
-                            <option value="" class="selectors faranah"></option>
-                            <option value="Kankan" class="selectors Kankan">Kankan</option>
-                            <option value="Kerouana" class="selectors Kankan">Kerouane</option>
-                            <option value="Kouroussa" class="selectors Kankan">Kouroussa</option>
-                            <option value="Mandiana" class="selectors Kankan">Mandiana</option>
-                            <option value="Siguiri" class="selectors Kankan">Siguiri</option>
-                            <option value="" class="selectors Kankan"></option>
-                            <option value="Coyah" class="selectors Kindia">Coyah</option>
-                            <option value="Dubreka" class="selectors Kindia">Dubreka</option>
-                            <option value="Forecariah" class="selectors Kindia">Forecariah</option>
-                            <option value="Kindia" class="selectors Kindia">Kindia</option>
-                            <option value="Telemele" class="selectors Kindia">Telemele</option>
-                            <option value="" class="selectors Kindia"></option>
-                            <option value="Koubia" class="selectors Labe">Koubia</option>
-                            <option value="Labe" class="selectors Labe">Labe</option>
-                            <option value="Lelouma" class="selectors Labe">Lelouma</option>
-                            <option value="Mali" class="selectors Labe">Mali</option>
-                            <option value="Tougue" class="selectors Labe">Tougue</option>
-                            <option value="" class="selectors Labe"></option>
-                            <option value="Dalaba" class="selectors Mamou">Dalaba</option>
-                            <option value="Mamou" class="selectors Mamou">Mamou</option>
-                            <option value="Pita" class="selectors Mamou">Pita</option>
-                            <option value="" class="selectors Mamou"></option>
-                            <option value="Beyla" class="selectors Nzérékoré">Beyla</option>
-                            <option value="Gueckedou" class="selectors Nzérékoré">Gueckedou</option>
-                            <option value="Lola" class="selectors Nzérékoré">Lola</option>
-                            <option value="Macenta" class="selectors Nzérékoré">Macenta</option>
-                            <option value="Nzérékoré" class="selectors Nzérékoré">N'zérékoré</option>
-                            <option value="Yamou" class="selectors Nzérékoré">Yamou</option>
-<!--                            <option value="" class="selectors N'zérékoré"></option>-->
+                        <select name="prefecture_scope" id="prefecture_scope" onchange="getAdminLayers(); triggerUiUpdate();" class="form-control">
+                            <option value="" disabled selected>All</option>
                         </select>
                     </div>
 
@@ -204,7 +152,8 @@
             </ul>
         </div>
         </section>
-        <script src="js/date.js"></script>
+        <script src="js/changePrefecture.js"></script>
+<!--        <script src="js/date.js"></script>-->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <!-- Bootstrap 3.3.5 -->

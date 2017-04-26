@@ -129,6 +129,11 @@
 
 }
 
+.imgsize{
+    height: 40px;
+    width: 40px;
+}
+
 #spinposition {
     position: absolute;
     top: 300px;

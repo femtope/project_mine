@@ -45,7 +45,7 @@
              <div class="alert alert-info sideColor">
 
                  <!--Region DropDown-->
-                 <br><br><br><br><br><br><br><br><br><br><br>
+                 <br><br><br><br><br><br><br><br><br><br>
                  <h4 class="info-box-number white"><i class="icon fa fa-globe fa-1x"></i>Région</h4>
                       <div class="form-group-sm">
                         <select name="region_scope" id="region_scope" onchange="changecat(this.value); getAdminLayers(); triggerUiUpdate();" class="form-control">
@@ -101,8 +101,7 @@
                                 <option value="Sable">Sable</option>
                         </select>
                       </div>
-                <br>
-                 
+
                  <div class="text-center">
                     <span class="info-box-text white">Currently Displaying:</span>
                     <span class="info-box-number white"><b id="country2"></b><big id="projectCount">0</big> Substance(s)  </span>
@@ -110,11 +109,10 @@
                  <br>
                 <div class="container">
                     <button type="button" class="btn btn-primary">
-                        <h4>Download</h4>
-                        <img class="imgsize" src="image/excel.png">
-
+<!--                        <h4>Download</h4>-->
+                        <a href="http://femtope.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20mine_guinea&format=CSV">
+                        <img class="imgsize" src="image/excel.png"></a>
                     </button>
-<!--                    &nbsp;&nbsp;<button type="button" class="btn btn-success"><h4>Download CSV</h4></button> -->
                 </div>
                 
             </div>

@@ -362,7 +362,7 @@ function normalizeName(source) {
 //Help with popup information
 function buildPopupContent(feature) {
     var subcontent = ''
-    var propertyNames = ['substance','date', 'carriere_region', 'carriere_prefecture', 'carriere_sous_prefecture', 'prenom_nom', 'fonction', 'societe', 'prenom_directeur', 'prenom_nom_directeur', 'sexe_directeur', 'email_directeur', 'telephone_directeur', 'emploi_direct_femme', 'emploi_direct_homme', 'prix_unitaire', 'production_total', 'quantite_vendu']
+    var propertyNames = ['prenom_nom', 'fonction', 'carriere_region', 'carriere_prefecture', 'carriere_sous_prefecture', 'substance', 'societe', 'site', 'taxe_superficiaire', 'prenom_directeur', 'observation', 'production_total', 'email_directeur', 'telephone_directeur', 'substance', 'date_expiration', 'date_demande', 'prix_unitaire', 'quantite_vendu', 'emploi_expatrier_femme', 'emploi_expatrier_homme', 'emploi_direct_femme', 'emploi_direct_homme', 'date']
     for (var i = 0; i < propertyNames.length; i++) {
         subcontent = subcontent.concat('<p><strong>' + normalizeName(propertyNames[i]) + ': </strong>' + feature.properties[propertyNames[i]] + '</p>')
 

@@ -1,5 +1,5 @@
 #map {
-    height: 710px;
+    height: 700px;
 }
 
 .skin-red-light .wrapper,
@@ -152,9 +152,10 @@
     position: absolute;
     top: 0px;
     right: 35px;
-    width: 250px;
+    width: 320px;
     height: 100px;
     background: transparent;
+/*    overflow: scroll;*/
 }
 
 input.checkbox  {

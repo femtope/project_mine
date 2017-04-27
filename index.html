@@ -108,11 +108,19 @@
                 </div>
                  <br>
                 <div class="container">
-                    <button type="button" class="btn btn-primary">
+<!--                    <button type="button" class="btn btn-primary">-->
 <!--                        <h4>Download</h4>-->
-                        <a href="http://femtope.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20mine_guinea&format=CSV">
+                        <a id="query">
                         <img class="imgsize" src="image/excel.png"></a>
+
+<!--                        <a onclick="printScreen()">-->
+<!--
+                    <button id="btnPrint" type="button" class="btn btn-primary">
+                        onclick="printDiv('map');
+                        <img id="print" class="imgsize" src="image/print1.jpg">
                     </button>
+-->
+
                 </div>
                 
             </div>
@@ -124,9 +132,7 @@
         </aside>
         <section>
 
-                <div class="col-md-12" id="map">
-
-                </div>
+                <div class="col-md-12" id="map"></div>
                 <div>
                   <h7 class="red text-center"><i class="icon fa fa-spinner fa-5x" id="spinposition"></i></h7>
                 </div>
@@ -162,6 +168,8 @@
         </section>
         <script src="js/changePrefecture.js"></script>
 <!--        <script src="js/date.js"></script>-->
+        <script src="js/FileSaver.js"></script>
+        <script src="js/html2canvas.js"></script>
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
         <!-- Bootstrap 3.3.5 -->

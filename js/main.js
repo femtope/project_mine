@@ -76,6 +76,33 @@ function adjustLayerbyZoom(zoomGIN) {
 
 }
 
+//function printDiv(divName) {
+//     var printContents = document.getElementById(divName).innerHTML;
+//     var originalContents = document.body.innerHTML;
+//
+//     document.body.innerHTML = printContents;
+//
+//     window.print();
+//
+//     document.body.innerHTML = originalContents;
+//}
+
+$(function() {
+    $("#btnPrint").click(function() {
+        html2canvas($("#map"), {
+            onrendered: function(canvas) {
+                theCanvas = canvas;
+                document.body.appendChild(canvas);
+
+                canvas.toBlob(function(blob) {
+					saveAs(blob, "Dashboard.png");
+				});
+            }
+        });
+    });
+});
+
+
 //This drives all the operation that will be rendering on the map
 function triggerUiUpdate() {
     societe = $('#societe_scope').val()
@@ -84,11 +111,17 @@ function triggerUiUpdate() {
     substance = $('#substance_type').val()
     console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance+"  "+date)
     var query = buildQuery(region, prefecture, societe, substance)
+    download_query = (query.replace("http:", "https:").replace("format=GeoJSON&", ""))+"&format=CSV";
+    document.getElementById("query").setAttribute("href",download_query);
     console.log("Query: ", query)
     getData(query)
+    //var download_query = """+query+""";
     prefecture_select = $('#region_scope').val()
 }
 
+//http://femtope.cartodb.com/api/v2/sql?q=SELECT%20*%20FROM%20mine_guinea&format=CSV
+
+//https://femtope.cartodb.com/api/v2/sql?q=SELECT * FROM mine_guinea WHERE carriere_region = 'Boké'
 
 //Read data from carto and filter via selection from the interface
 function buildQuery(region, prefecture, societe, substance) {

@@ -107,7 +107,7 @@ $(function() {
 function triggerUiUpdate() {
     societe = $('#societe_scope').val()
     region = $('#region_scope').val()
-    prefecture = $('#prefecture_scope').val()
+    prefecture = ($('#prefecture_scope').val()).toLowerCase();
     substance = $('#substance_type').val()
     console.log("All Seleceted: ", societe+"  "+region+"  "+prefecture+"  "+substance+"  "+date)
     var query = buildQuery(region, prefecture, societe, substance)
